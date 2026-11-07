@@ -501,7 +501,7 @@ h3,
   object-fit: cover;
   object-position: top center;
   margin: 0;
-  filter: contrast(1.08) saturate(1.05);
+  filter: contrast(1.12) brightness(0.96) saturate(1.06);
 }
 
 .founder-copy {
