@@ -225,10 +225,6 @@ h3,
   letter-spacing: 0.04em;
 }
 
-.footer-brand span {
-  color: var(--brand);
-}
-
 .footer-grid h3 {
   margin: 0 0 0.85rem;
   color: var(--white);
@@ -321,15 +317,12 @@ h3,
 
 .brand-mark {
   margin: 0 0 1rem;
+  color: var(--white);
   font-family: var(--font-ui);
   font-size: clamp(3.4rem, 9vw, 6.4rem);
   font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 0.95;
-}
-
-.brand-mark .in {
-  color: #ffd6d6;
 }
 
 .hero h1 {
