@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contatti — ALPINGEO"
+  description="Contatta ALPINGEO Engineering S.r.l. a Bolzano: infoalpingeo@gmail.com, PEC alpingeo@legalmail.it."
+>
+  <section class="hero hero-compact" aria-label="Contatti">
+    <div class="hero-media" aria-hidden="true">
+      <img src="/images/hero-home.jpg" alt="" width="2400" height="1600" fetchpriority="high" />
+    </div>
+    <div class="hero-content">
+      <p class="eyebrow" style="color: #ffb3b3;">Contatti</p>
+      <h1>Parliamone</h1>
+      <p class="hero-lead">
+        Sede a Bolzano. Scrivici per fattibilità, indagini o un confronto sul progetto.
+      </p>
+    </div>
+    <p class="hero-credit">Foto: Unsplash</p>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="reveal">
+        <div class="contact-block">
+          <h2>Sede</h2>
+          <p>
+            ALPINGEO Engineering S.r.l.<br />
+            Corso della Libertà, 15<br />
+            39100 Bolzano (BZ)
+          </p>
+        </div>
+        <div class="contact-block">
+          <h2>Email</h2>
+          <p>
+            <a href="mailto:infoalpingeo@gmail.com">infoalpingeo@gmail.com</a><br />
+            <a href="mailto:alpingeo@legalmail.it">alpingeo@legalmail.it</a> — PEC
+          </p>
+        </div>
+        <div class="contact-block">
+          <h2>Dati societari</h2>
+          <p>
+            C.F. / P.IVA 03335530212<br />
+            REA BZ-251422<br />
+            Capitale sociale 10.000,00 €
+          </p>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contact-form" novalidate>
+        <h2>Messaggio rapido</h2>
+        <p class="hint">
+          Il form apre il client di posta con i dati compilati (nessun invio server).
+        </p>
+        <div class="field">
+          <label for="name">Nome</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="subject">Oggetto</label>
+          <input
+            id="subject"
+            name="subject"
+            type="text"
+            value="Richiesta informazioni — ALPINGEO"
+            required
+          />
+        </div>
+        <div class="field">
+          <label for="message">Messaggio</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Descrivi brevemente il progetto o la richiesta..."
+            required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Apri email</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const form = document.querySelector('#contact-form') as HTMLFormElement | null;
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const name = String(data.get('name') || '').trim();
+      const email = String(data.get('email') || '').trim();
+      const subject = String(data.get('subject') || '').trim();
+      const message = String(data.get('message') || '').trim();
+      const body = [
+        message,
+        '',
+        '—',
+        `Nome: ${name}`,
+        `Email: ${email}`,
+      ].join('\n');
+      const href = `mailto:infoalpingeo@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = href;
+    });
+  </script>
+</BaseLayout>

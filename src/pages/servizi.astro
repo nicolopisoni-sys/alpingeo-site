@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const phases = [
+  {
+    id: 'analisi',
+    num: '01',
+    title: 'Analisi',
+    lede: 'Conoscere il terreno prima di progettare.',
+    items: [
+      'Consulenza e studi di fattibilità',
+      'Indagini geotecniche e geognostiche',
+      'Rilievi topografici, fotogrammetrici e geotecnici',
+      'Analisi e verifiche idrauliche',
+      'Caratterizzazione geomeccanica e modellazione',
+      'Relazioni geotecniche',
+    ],
+  },
+  {
+    id: 'progettazione',
+    num: '02',
+    title: 'Progettazione',
+    lede: 'Dal modello al progetto esecutivo, con attenzione agli iter.',
+    items: [
+      'BIM e calcolo di strutture e fondazioni',
+      'Interventi di regimazione e sistemazione fluviale',
+      'Consolidamento e stabilizzazione',
+      'Sicurezza in progettazione (CSP)',
+      'Supporto agli iter autorizzativi',
+    ],
+  },
+  {
+    id: 'cantiere',
+    num: '03',
+    title: 'Cantiere',
+    lede: 'Presenza tecnica dove il progetto diventa opera.',
+    items: [
+      'Direzione lavori',
+      'Sicurezza in esecuzione (CSE)',
+      'Supporto alle gare d’appalto',
+    ],
+  },
+  {
+    id: 'chiusura',
+    num: '04',
+    title: 'Chiusura',
+    lede: 'Documentazione, controlli e chiusura ordinata del percorso.',
+    items: [
+      'Contabilità dei lavori',
+      'Verifiche e validazioni',
+      'Relazione di fine lavori',
+      'Strutture ultimate',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Servizi — ALPINGEO"
+  description="Servizi di ingegneria geotecnica ALPINGEO: analisi, progettazione, cantiere e chiusura."
+>
+  <section class="hero hero-compact" aria-label="Servizi">
+    <div class="hero-media" aria-hidden="true">
+      <img src="/images/hero-page.jpg" alt="" width="2400" height="1600" fetchpriority="high" />
+    </div>
+    <div class="hero-content">
+      <p class="eyebrow" style="color: #ffb3b3;">Servizi</p>
+      <h1>Dal terreno al cantiere</h1>
+      <p class="hero-lead">
+        Quattro fasi integrate: indagini e modellazione, progettazione, direzione lavori, chiusura
+        e validazione.
+      </p>
+    </div>
+    <p class="hero-credit">Foto: Unsplash</p>
+  </section>
+
+  <nav class="phase-nav" aria-label="Fasi dei servizi">
+    {
+      phases.map((phase) => (
+        <a href={`#${phase.id}`}>
+          {phase.num} {phase.title}
+        </a>
+      ))
+    }
+  </nav>
+
+  <div class="container">
+    {
+      phases.map((phase) => (
+        <section class="phase-block reveal" id={phase.id}>
+          <div>
+            <p class="num">{phase.num}</p>
+            <h2>{phase.title}</h2>
+            <p class="lede">{phase.lede}</p>
+          </div>
+          <ul>
+            {phase.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+
+  <section class="cta-band">
+    <div class="container inner reveal">
+      <div>
+        <h2>Serve un confronto sul tuo intervento?</h2>
+        <p>Descrivi il contesto: ti indichiamo la fase più utile da cui partire.</p>
+      </div>
+      <a class="btn btn-primary" href="/contatti">Scrivici</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,133 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'ALPINGEO Engineering S.r.l. — studio di ingegneria geotecnica a Bolzano, Alto Adige.',
+} = Astro.props;
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1F1F1F" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container inner">
+        <a class="logo" href="/" aria-label="ALPINGEO — Home">
+          <img src="/images/alpingeo-logo.png" alt="ALPINGEO" width="220" height="43" />
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Apri menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" id="site-nav" aria-label="Principale">
+          <a href="/" aria-current={pathname === '/' ? 'page' : undefined}>Home</a>
+          <a href="/chi-siamo" aria-current={pathname === '/chi-siamo' ? 'page' : undefined}>Chi siamo</a>
+          <a href="/servizi" aria-current={pathname === '/servizi' ? 'page' : undefined}>Servizi</a>
+          <a href="/contatti" aria-current={pathname === '/contatti' ? 'page' : undefined}>Contatti</a>
+          <a class="btn btn-primary nav-cta" href="/contatti">Contattaci</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <p class="footer-brand">ALP<span>IN</span>GEO</p>
+            <p style="margin-top: 0.85rem;">
+              Studio di ingegneria geotecnica in Alto Adige.<br />
+              Dalla conoscenza del terreno alla direzione lavori.
+            </p>
+          </div>
+          <div>
+            <h3>Pagine</h3>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/chi-siamo">Chi siamo</a></li>
+              <li><a href="/servizi">Servizi</a></li>
+              <li><a href="/contatti">Contatti</a></li>
+              <li><a href="/privacy">Privacy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Sede</h3>
+            <p>
+              ALPINGEO Engineering S.r.l.<br />
+              Corso della Libertà, 15<br />
+              39100 Bolzano (BZ)
+            </p>
+            <p style="margin-top: 0.85rem;">
+              <a href="mailto:infoalpingeo@gmail.com">infoalpingeo@gmail.com</a><br />
+              <a href="mailto:alpingeo@legalmail.it">alpingeo@legalmail.it</a> (PEC)
+            </p>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <span>© {new Date().getFullYear()} ALPINGEO Engineering S.r.l.</span>
+          <span>C.F. / P.IVA 03335530212 · REA BZ-251422</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('#site-nav');
+
+      toggle?.addEventListener('click', () => {
+        const open = nav?.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Chiudi menu' : 'Apri menu');
+      });
+
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.18 },
+        );
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const phases = [
+  {
+    num: '01',
+    title: 'Analisi',
+    text: 'Fattibilità, indagini, rilievi e modellazione del terreno.',
+    href: '/servizi#analisi',
+  },
+  {
+    num: '02',
+    title: 'Progettazione',
+    text: 'BIM, fondazioni, consolidamenti e iter autorizzativi.',
+    href: '/servizi#progettazione',
+  },
+  {
+    num: '03',
+    title: 'Cantiere',
+    text: 'Direzione lavori, sicurezza in esecuzione, supporto gare.',
+    href: '/servizi#cantiere',
+  },
+  {
+    num: '04',
+    title: 'Chiusura',
+    text: 'Contabilità, verifiche, validazioni e fine lavori.',
+    href: '/servizi#chiusura',
+  },
+];
+---
+
+<BaseLayout
+  title="ALPINGEO — Ingegneria geotecnica in Alto Adige"
+  description="Studio di ingegneria geotecnica a Bolzano: indagini, progettazione, direzione lavori e sicurezza per il territorio alpino."
+>
+  <section class="hero" aria-label="Introduzione">
+    <div class="hero-media" aria-hidden="true">
+      <img
+        src="/images/hero-home.jpg"
+        alt=""
+        width="2400"
+        height="1600"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="hero-content">
+      <p class="brand-mark" aria-label="ALPINGEO">ALP<span class="in">IN</span>GEO</p>
+      <h1>Ingegneria geotecnica per il territorio alpino</h1>
+      <p class="hero-lead">
+        Studio a Bolzano: dalla conoscenza del terreno alla direzione lavori, con precisione e
+        rispetto del paesaggio.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/contatti">Parliamone</a>
+        <a class="btn btn-ghost" href="/servizi">I nostri servizi</a>
+      </div>
+    </div>
+    <p class="hero-credit">Foto: Unsplash</p>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Lo studio</p>
+        <h2>Geotecnica radicata in Alto Adige</h2>
+        <p>
+          ALPINGEO affianca committenze pubbliche e private su indagini, progettazione di
+          fondazioni e interventi di consolidamento, direzione lavori e sicurezza — con attenzione
+          alla tutela del territorio e alla sostenibilità.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Come lavoriamo</p>
+        <h2>Quattro fasi, un filo continuo</h2>
+        <p>Dal primo rilievo al collaudo: un percorso integrato, senza spezzare responsabilità.</p>
+      </div>
+      <div class="phase-grid">
+        {
+          phases.map((phase) => (
+            <a class="phase-link reveal" href={phase.href}>
+              <span class="num">{phase.num}</span>
+              <h3>{phase.title}</h3>
+              <p>{phase.text}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container inner reveal">
+      <div>
+        <h2>Un progetto sul territorio?</h2>
+        <p>
+          Scrivici per uno studio di fattibilità, un’indagine o un confronto tecnico. Rispondiamo
+          da Bolzano.
+        </p>
+      </div>
+      <a class="btn btn-primary" href="/contatti">Contatti</a>
+    </div>
+  </section>
+</BaseLayout>
