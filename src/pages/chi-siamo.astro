@@ -24,7 +24,7 @@ const founders = [
       <img src="/images/hero-page.jpg" alt="" width="2400" height="1600" fetchpriority="high" />
     </div>
     <div class="hero-content">
-      <p class="eyebrow" style="color: #ffb3b3;">Chi siamo</p>
+      <p class="eyebrow eyebrow-on-dark">Chi siamo</p>
       <h1>Ingegneria radicata in Alto Adige</h1>
       <p class="hero-lead">
         Specializzazione in geotecnica, supporto multidisciplinare e attenzione al territorio.
@@ -45,25 +45,25 @@ const founders = [
         </p>
       </div>
 
-      <div class="reveal">
-        <p class="eyebrow">Fondatori</p>
-        <h2 style="margin: 0 0 0.5rem; font-size: clamp(1.8rem, 3.4vw, 2.4rem);">
-          Chi guida lo studio
-        </h2>
-      </div>
+      <div class="founders reveal">
+        <div class="founders-head">
+          <p class="eyebrow">Fondatori</p>
+          <h2>Chi guida lo studio</h2>
+        </div>
 
-      {
-        founders.map((person) => (
-          <article class="founder reveal">
-            <img src={person.image} alt={person.name} width="280" height="340" loading="lazy" />
-            <div>
-              <p class="role">Fondatore</p>
-              <h3>{person.name}</h3>
-              <p>{person.bio}</p>
-            </div>
-          </article>
-        ))
-      }
+        {
+          founders.map((person) => (
+            <article class="founder">
+              <img src={person.image} alt={person.name} width="280" height="340" loading="lazy" />
+              <div class="founder-copy">
+                <p class="role">Fondatore</p>
+                <h3>{person.name}</h3>
+                <p>{person.bio}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
 
       <div class="company-card reveal">
         <p class="eyebrow">Dati societari</p>

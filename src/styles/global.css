@@ -76,6 +76,10 @@ h3,
   text-transform: uppercase;
 }
 
+.eyebrow-on-dark {
+  color: rgba(255, 255, 255, 0.82);
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -461,20 +465,49 @@ h3,
   transform: none;
 }
 
+.founders {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.founders-head {
+  margin: 0 0 0.25rem;
+  padding: 0;
+}
+
+.founders-head h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+}
+
 .founder {
   display: grid;
-  grid-template-columns: 11rem 1fr;
+  grid-template-columns: 13.5rem minmax(0, 1fr);
   gap: 1.75rem;
   align-items: start;
+  justify-items: stretch;
+  width: 100%;
+  margin: 0;
   padding: 2rem 0;
+  padding-inline: 0;
   border-top: 1px solid var(--line);
 }
 
 .founder img {
-  width: 11rem;
+  width: 13.5rem;
+  max-width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
   object-position: top center;
+  margin: 0;
+  filter: contrast(1.08) saturate(1.05);
+}
+
+.founder-copy {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
 }
 
 .founder .role {
@@ -751,12 +784,12 @@ h3,
   }
 
   .founder {
-    grid-template-columns: 8.5rem 1fr;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
     gap: 1.15rem;
   }
 
   .founder img {
-    width: 8.5rem;
+    width: 9.5rem;
   }
 
   .company-card dl {
