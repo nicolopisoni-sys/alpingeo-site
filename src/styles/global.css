@@ -712,8 +712,64 @@ h3,
   font-size: 1.25rem;
 }
 
-.legal p {
+.legal h3 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.legal p,
+.legal li {
   color: var(--ink-soft);
+}
+
+.legal a {
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.legal ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.legal li + li {
+  margin-top: 0.45rem;
+}
+
+.legal-banner {
+  margin: 0 0 1.25rem;
+  padding: 0.95rem 1rem;
+  border-left: 3px solid var(--brand);
+  background: var(--white);
+  color: var(--ink-soft);
+}
+
+.field-check label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.field-check input[type="checkbox"] {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  accent-color: var(--brand);
+}
+
+.field-check a {
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
 }
 
 @keyframes kenburns {

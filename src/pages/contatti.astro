@@ -79,6 +79,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             placeholder="Descrivi brevemente il progetto o la richiesta..."
             required></textarea>
         </div>
+        <div class="field field-check">
+          <label for="privacy">
+            <input id="privacy" name="privacy" type="checkbox" required />
+            <span>
+              Ho letto la
+              <a href="/privacy">privacy policy</a>
+            </span>
+          </label>
+        </div>
         <button class="btn btn-primary" type="submit">Apri email</button>
       </form>
     </div>
@@ -88,6 +97,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const form = document.querySelector('#contact-form') as HTMLFormElement | null;
     form?.addEventListener('submit', (event) => {
       event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
       const data = new FormData(form);
       const name = String(data.get('name') || '').trim();
       const email = String(data.get('email') || '').trim();
